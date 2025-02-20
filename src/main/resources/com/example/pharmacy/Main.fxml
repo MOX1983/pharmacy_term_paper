@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.pharmacy.Main"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.MainClass">
+   <top>
+      <MenuBar fx:id="manubar" prefHeight="25.0" prefWidth="388.0" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="All_pharm" mnemonicParsing="false" text="Все лекарства">
+               <items>
+                  <Menu fx:id="sor_pharm" mnemonicParsing="false" text="Сортировка">
+                    <items>
+                      <MenuItem fx:id="sort_A_Z" mnemonicParsing="false" text="По алфавиту (А-Я)" />
+                        <MenuItem fx:id="sort_Z_A" mnemonicParsing="false" text="По алфавиту (Я-А)" />
+                    </items>
+                  </Menu>
+               </items>
+          </Menu>
+          <Menu fx:id="actions" mnemonicParsing="false" text="Действие">
+               <items>
+                  <MenuItem fx:id="add_pharm" mnemonicParsing="false" text="Добавить партию" />
+                  <MenuItem fx:id="delete_pharm" mnemonicParsing="false" text="Удалить партию" />
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TableView fx:id="table_data" prefHeight="344.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="105.0" text=" Название" />
+            <TableColumn prefWidth="217.0" text="Описание" />
+          <TableColumn minWidth="0.0" prefWidth="95.0" text="Количество" />
+            <TableColumn minWidth="0.0" prefWidth="181.0" text="Срок годности партии" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
