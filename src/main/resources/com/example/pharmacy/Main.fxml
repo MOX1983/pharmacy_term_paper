@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.MainClass">
    <top>
       <MenuBar fx:id="manubar" prefHeight="25.0" prefWidth="388.0" BorderPane.alignment="CENTER">
@@ -34,10 +33,10 @@
    <center>
       <TableView fx:id="table_data" prefHeight="344.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="105.0" text=" Название" />
-            <TableColumn prefWidth="217.0" text="Описание" />
-          <TableColumn minWidth="0.0" prefWidth="95.0" text="Количество" />
-            <TableColumn minWidth="0.0" prefWidth="181.0" text="Срок годности партии" />
+          <TableColumn fx:id="Name" prefWidth="105.0" text=" Название" />
+            <TableColumn fx:id="Description" prefWidth="217.0" text="Описание" />
+          <TableColumn fx:id="Quantity" minWidth="0.0" prefWidth="95.0" text="Количество" />
+            <TableColumn fx:id="DAta" minWidth="0.0" prefWidth="181.0" text="Срок годности партии" />
         </columns>
       </TableView>
    </center>
