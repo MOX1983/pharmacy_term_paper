@@ -1,9 +1,6 @@
 package com.example.pharmacy;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JDBCTable extends Config{
 
@@ -26,5 +23,34 @@ public class JDBCTable extends Config{
         }
     }
 
-    // написать чтение таблицы sql
+    public static ResultSet readUserSQL(User user){
+        ResultSet rs = null;
+
+        String select = "SELECT * FROM " + TablDB.NAME_TABLE +
+                " WHERE login =? AND pass =?";
+        try(Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass)){
+            PreparedStatement prst = con.prepareStatement(select);
+            prst.setString(1, user.getLogin());
+            prst.setString(2, user.getPassword());
+            rs = prst.executeQuery();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
+
+    public static ResultSet readPillsSQL(){
+        ResultSet rs = null;
+
+        String select = "select namepills, description, quantity, expiratiodate from  " + TablDB.NAME_TABLE_PILLS;
+        try(Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass)){
+            Statement stmt = con.createStatement();
+            rs = stmt.executeQuery(select);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
 }
