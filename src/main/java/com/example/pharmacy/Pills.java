@@ -1,6 +1,6 @@
 package com.example.pharmacy;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Pills {
     private int idUser;
