@@ -3,8 +3,10 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.MainClass">
@@ -13,12 +15,12 @@
         <menus>
           <Menu fx:id="All_pharm" mnemonicParsing="false" text="Все лекарства">
                <items>
-                  <Menu fx:id="sor_pharm" mnemonicParsing="false" text="Сортировка">
-                    <items>
-                      <MenuItem fx:id="sort_A_Z" mnemonicParsing="false" text="По алфавиту (А-Я)" />
-                        <MenuItem fx:id="sort_Z_A" mnemonicParsing="false" text="По алфавиту (Я-А)" />
-                    </items>
-                  </Menu>
+                  <RadioMenuItem fx:id="sort_A_Z" mnemonicParsing="false" text="По алфавиту (А-Я)">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sort" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="sort_Z_A" mnemonicParsing="false" text="По алфавиту (Я-А)" toggleGroup="$sort" />
                </items>
           </Menu>
           <Menu fx:id="actions" mnemonicParsing="false" text="Действие">
@@ -36,7 +38,7 @@
           <TableColumn fx:id="Name" prefWidth="105.0" text=" Название" />
             <TableColumn fx:id="Description" prefWidth="217.0" text="Описание" />
           <TableColumn fx:id="Quantity" minWidth="0.0" prefWidth="95.0" text="Количество" />
-            <TableColumn fx:id="DAta" minWidth="0.0" prefWidth="181.0" text="Срок годности партии" />
+            <TableColumn fx:id="Date" minWidth="0.0" prefWidth="181.0" text="Срок годности партии" />
         </columns>
       </TableView>
    </center>

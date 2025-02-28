@@ -2,7 +2,7 @@ package com.example.pharmacy;
 
 import java.util.Date;
 
-public class Pills {
+public class Pills implements Comparable<Pills>{
     private int idUser;
     private String name;
     private String description;
@@ -64,5 +64,10 @@ public class Pills {
                 ", quantity=" + quantity +
                 ", expiratio Date=" + expiratioDate +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Pills o) {
+        return name.compareTo(o.name);
     }
 }
