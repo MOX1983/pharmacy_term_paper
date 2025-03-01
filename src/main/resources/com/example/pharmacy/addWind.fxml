@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.AddClass">
    <children>
-      <Button layoutX="241.0" layoutY="185.0" mnemonicParsing="false" text="Добавить">
+      <Button fx:id="addButten" layoutX="241.0" layoutY="185.0" mnemonicParsing="false" text="Добавить">
          <font>
             <Font size="14.0" />
          </font>
