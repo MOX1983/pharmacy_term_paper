@@ -1,15 +1,21 @@
 package com.example.pharmacy;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import java.sql.Date;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 public class MainClass {
 
@@ -49,10 +55,8 @@ public class MainClass {
     @FXML
     private MenuBar manubar;
 
-//    @FXML
-//    private ToggleGroup sort;
-//    RadioMenuItem s = (RadioMenuItem) sort.getSelectedToggle();
-//    String strR = s.getText();
+    @FXML
+    private ToggleGroup sort;
 
     @FXML
     private RadioMenuItem sort_A_Z;
@@ -72,6 +76,35 @@ public class MainClass {
 
         table_data.setItems(dataPills);
 
+        sort_A_Z.setOnAction(event -> {
+            if(sort_A_Z.isSelected()){
+                dataPills = FXCollections.observableArrayList(sortA_Z());
+                table_data.setItems(dataPills);
+            }
+        });
+        sort_Z_A.setOnAction(event ->{
+            if(sort_Z_A.isSelected()){
+                dataPills = FXCollections.observableArrayList(sortZ_A());
+                table_data.setItems(dataPills);
+            }
+        });
+
+        add_pharm.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/com/example/pharmacy/addWind.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Добавить");
+            stage.showAndWait();
+        });
 
     }
 
@@ -90,20 +123,16 @@ public class MainClass {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        sortA_Z();
-
-//        if(strR.equals("По алфавиту (А-Я)")) sort_A_Z();
-//        else if(strR.equals("По алфавиту (Я-А)")) sort_Z_A();
-//        else return arrPills;
-// хз RadioMenuItem получает null
         return arrPills;
     }
 
-    public void sortA_Z(){
+    public ArrayList<Pills> sortA_Z(){
         Collections.sort(arrPills);
+        return arrPills;
     }
 
-    public void sortZ_A(){
-        arrPills.reversed();
+    public ArrayList<Pills> sortZ_A(){
+        Collections.reverse(arrPills);
+        return arrPills;
     }
 }
