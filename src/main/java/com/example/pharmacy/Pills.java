@@ -70,4 +70,5 @@ public class Pills implements Comparable<Pills>{
     public int compareTo(Pills o) {
         return name.compareTo(o.name);
     }
+
 }
