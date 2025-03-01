@@ -28,7 +28,7 @@ public class MainClass {
     @FXML
     private Menu All_pharm;
 
-    ArrayList<Pills> arrPills = new ArrayList<>();
+    ArrayList<Pills> arrPills;
     ObservableList<Pills> dataPills = FXCollections.observableArrayList(read());
 
     @FXML
@@ -104,11 +104,17 @@ public class MainClass {
             stage.setScene(new Scene(root));
             stage.setTitle("Добавить");
             stage.showAndWait();
+
+            dataPills.clear();
+            dataPills = FXCollections.observableArrayList(read());
+            table_data.setItems(dataPills);
+
         });
 
     }
 
     public ArrayList<Pills> read(){
+        arrPills = new ArrayList<>();
         ResultSet rs = JDBCTable.readPillsSQL();
 
         try {
