@@ -1,6 +1,6 @@
 package com.example.pharmacy;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Pills implements Comparable<Pills>{
     private int idUser;
