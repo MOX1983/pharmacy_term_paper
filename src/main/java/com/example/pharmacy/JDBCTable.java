@@ -53,4 +53,24 @@ public class JDBCTable extends Config{
         }
         return rs;
     }
+
+    public static void insertPills(Pills pill ){
+        String insert = "INSERT INTO pills(iduser, namepills, description, quantity, expiratiodate) " +
+                " VALUES" + "(?,?,?,?,?)";
+
+        try (Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass)){
+            PreparedStatement ps = con.prepareStatement(insert);
+
+            ps.setInt(1, pill.getIdUser());
+            ps.setString(2, pill.getName());
+            ps.setString(3, pill.getDescription());
+            ps.setInt(4, pill.getQuantity());
+            ps.setDate(5, pill.getExpiratioDate());
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
