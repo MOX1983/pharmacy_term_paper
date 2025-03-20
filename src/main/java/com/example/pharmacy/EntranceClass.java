@@ -47,11 +47,11 @@ public class EntranceClass {
         });
 
         registration.setOnAction(event -> {
-            openNewWin("/com/example/pharmacy/registration.fxml");
+            openNewWin("/com/example/pharmacy/registration.fxml", "Регистрация");
         });
 
     }
-    public void openNewWin(String path){
+    public void openNewWin(String path, String title){
         registration.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
@@ -66,6 +66,7 @@ public class EntranceClass {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle(title);
         stage.showAndWait();
     }
 
@@ -77,7 +78,7 @@ public class EntranceClass {
 
         try {
             if(rs.next()){
-                openNewWin("/com/example/pharmacy/Main.fxml");
+                openNewWin("/com/example/pharmacy/Main.fxml", "Главная");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -44,12 +44,12 @@ public class RegistrationClass {
             JDBCTable.writesql(user);
 
             if(!firstName.equals("") && !log.equals("") && !pass.equals("")){
-                openNewWin("/com/example/pharmacy/Main.fxml");
+                openNewWin("/com/example/pharmacy/Main.fxml", "Главная");
             }
         });
 
     }
-    public void openNewWin(String path){
+    public void openNewWin(String path, String title){
         registration.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
@@ -64,6 +64,7 @@ public class RegistrationClass {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle(title);
         stage.showAndWait();
     }
 
