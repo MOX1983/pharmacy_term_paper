@@ -55,8 +55,6 @@ public class DelePills {
 
     @FXML
     private ToggleGroup reason;
-    RadioButton r = (RadioButton) reason.getSelectedToggle();
-
 
     @FXML
     private TableView<Pills> table_data;
@@ -74,10 +72,17 @@ public class DelePills {
         table_data.setItems(dataPills);
 
         dele_b.setOnAction(event -> {
+            RadioButton r = (RadioButton) reason.getSelectedToggle();
             String answer = r.getText();
+            Pills pill = table_data.getSelectionModel().getSelectedItem();
 
-            if(answer.equals("Закончилось") || answer.equals("Истёк срок годноости ") || (answer.equals("Другое") && !text_other.equals(""))){
-                // даписать удаление через выделенную строку
+            if(!answer.equals("")){
+                arrPills.remove(pill);
+                JDBCTable.delePills(pill);
+
+                dataPills.clear();
+                dataPills = FXCollections.observableArrayList(read());
+                table_data.setItems(dataPills);
             }
         });
 
