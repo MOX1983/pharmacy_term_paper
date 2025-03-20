@@ -73,4 +73,19 @@ public class JDBCTable extends Config{
             throw new RuntimeException(e);
         }
     }
+
+    public static void delePills(Pills pill){
+        String delete = "DELETE FROM pills WHERE namepills = ?";
+
+        try (Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass)){
+            PreparedStatement ps = con.prepareStatement(delete);
+
+            ps.setString(1, pill.getName());
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
