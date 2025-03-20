@@ -90,20 +90,7 @@ public class MainClass {
         });
 
         add_pharm.setOnAction(event -> {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/com/example/pharmacy/addWind.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Добавить");
-            stage.showAndWait();
+            openWin("/com/example/pharmacy/addWind.fxml", "Добавить");
 
             dataPills.clear();
             dataPills = FXCollections.observableArrayList(read());
@@ -111,6 +98,30 @@ public class MainClass {
 
         });
 
+        delete_pharm.setOnAction(event -> {
+            openWin("/com/example/pharmacy/delePills.fxml", "Удалить");
+
+            dataPills.clear();
+            dataPills = FXCollections.observableArrayList(read());
+            table_data.setItems(dataPills);
+        });
+
+    }
+    public void openWin(String path, String title){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(path));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle(title);
+        stage.showAndWait();
     }
 
     public ArrayList<Pills> read(){
