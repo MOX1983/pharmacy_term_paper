@@ -3,6 +3,8 @@ package com.example.pharmacy;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import animation.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -40,11 +42,21 @@ public class RegistrationClass {
             String log = login.getText();
             String pass = password.getText();
 
-            User user = new User(firstName, log, pass);
-            JDBCTable.writesql(user);
-
             if(!firstName.equals("") && !log.equals("") && !pass.equals("")){
+                User user = new User(firstName, log, pass);
+                JDBCTable.writesql(user);
                 openNewWin("/com/example/pharmacy/Main.fxml", "Главная");
+            }
+            else{
+                Shake butt = new Shake(registration);
+                Shake logtext = new Shake(login);
+                Shake logpass = new Shake(password);
+                Shake nameText = new Shake(First_name);
+
+                butt.playAnim();
+                logtext.playAnim();
+                logpass.playAnim();
+                nameText.playAnim();
             }
         });
 

@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import animation.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,6 +46,14 @@ public class EntranceClass {
             if(!log.equals("") && !pass.equals("")){
                 setLogin(log, pass);
             }
+            else{
+                Shake butt = new Shake(sing_in);
+                Shake logtext = new Shake(login);
+                Shake logpass = new Shake(password);
+                butt.playAnim();
+                logtext.playAnim();
+                logpass.playAnim();
+            }
         });
 
         registration.setOnAction(event -> {
@@ -79,6 +89,14 @@ public class EntranceClass {
         try {
             if(rs.next()){
                 openNewWin("/com/example/pharmacy/Main.fxml", "Главная");
+            }
+            else{
+                Shake butt = new Shake(sing_in);
+                Shake logtext = new Shake(login);
+                Shake logpass = new Shake(password);
+                butt.playAnim();
+                logtext.playAnim();
+                logpass.playAnim();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
