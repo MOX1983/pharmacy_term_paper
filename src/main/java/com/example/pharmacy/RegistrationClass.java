@@ -51,7 +51,6 @@ public class RegistrationClass {
     }
     public void openNewWin(String path, String title){
         registration.getScene().getWindow().hide();
-
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
 
@@ -65,7 +64,7 @@ public class RegistrationClass {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle(title);
-        stage.showAndWait();
+        stage.show();
     }
 
 }
