@@ -43,7 +43,7 @@ public class JDBCTable extends Config{
     public static ResultSet readPillsSQL(){
         ResultSet rs = null;
 
-        String select = "select namepills, description, quantity, expiratiodate from  " + TablDB.NAME_TABLE_PILLS;
+        String select = "select namepills, quantity, expiratiodate from  " + TablDB.NAME_TABLE_PILLS;
         try(Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass)){
             Statement stmt = con.createStatement();
             rs = stmt.executeQuery(select);
@@ -54,9 +54,25 @@ public class JDBCTable extends Config{
         return rs;
     }
 
+    public static ResultSet readAllPillsSQL(Pills pill){
+        ResultSet rs = null;
+
+        String select = "SELECT * FROM " + TablDB.NAME_TABLE_PILLS +
+                " WHERE namepills = ?";
+        try(Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass)){
+            PreparedStatement ps = con.prepareStatement(select);
+            ps.setString(1, pill.getName());
+            rs = ps.executeQuery();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
+
     public static void insertPills(Pills pill ){
-        String insert = "INSERT INTO pills(iduser, namepills, description, quantity, expiratiodate) " +
-                " VALUES" + "(?,?,?,?,?)";
+        String insert = "INSERT INTO pills(iduser, namepills, description, quantity, expiratiodate, image) " +
+                " VALUES" + "(?,?,?,?,?,?)";
 
         try (Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass)){
             PreparedStatement ps = con.prepareStatement(insert);
@@ -66,6 +82,7 @@ public class JDBCTable extends Config{
             ps.setString(3, pill.getDescription());
             ps.setInt(4, pill.getQuantity());
             ps.setDate(5, pill.getExpiratioDate());
+            ps.setBytes(6, pill.getImg());
 
             ps.executeUpdate();
 
