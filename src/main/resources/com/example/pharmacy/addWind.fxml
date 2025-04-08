@@ -4,9 +4,9 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.AddClass">
    <children>
@@ -27,5 +27,7 @@
       </TextField>
       <TextArea fx:id="textArr" layoutX="53.0" layoutY="81.0" prefHeight="134.0" prefWidth="173.0" promptText="Описание" />
       <DatePicker fx:id="date" layoutX="241.0" layoutY="81.0" prefHeight="25.0" prefWidth="118.0" promptText="Срок годности" />
+      <Button fx:id="add_img" layoutX="241.0" layoutY="123.0" mnemonicParsing="false" text="Добавить фото" />
+      <ImageView fx:id="imgFile" fitHeight="45.0" fitWidth="53.0" layoutX="344.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
