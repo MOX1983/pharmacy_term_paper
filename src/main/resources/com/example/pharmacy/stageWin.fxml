@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.stage.Stage?>
+<?import javafx.scene.text.Font?>
 
-<Stage xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.StageClass">
-    <scene>
-        <Scene>
-            <AnchorPane prefHeight="200" prefWidth="200" />
-        </Scene>
-    </scene>
-</Stage>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="343.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.StageClass">
+   <children>
+      <Label fx:id="name_pills" layoutX="37.0" layoutY="29.0" prefHeight="27.0" prefWidth="174.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="description" layoutX="37.0" layoutY="76.0" prefHeight="142.0" prefWidth="174.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="quantity" layoutX="227.0" layoutY="33.0" prefHeight="20.0" prefWidth="97.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="expirationData" layoutX="371.0" layoutY="33.0" prefHeight="20.0" prefWidth="97.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="220.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
