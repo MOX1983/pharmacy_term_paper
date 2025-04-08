@@ -33,9 +33,6 @@ public class DelePills {
     private TableColumn<Pills, java.sql.Date> Date;
 
     @FXML
-    private TableColumn<Pills, String> Description;
-
-    @FXML
     private TableColumn<Pills, String> Name;
 
     @FXML
@@ -65,7 +62,6 @@ public class DelePills {
     @FXML
     void initialize() {
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        Description.setCellValueFactory(new PropertyValueFactory<>("description"));
         Quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         Date.setCellValueFactory(new PropertyValueFactory<>("expiratioDate"));
 
@@ -94,11 +90,10 @@ public class DelePills {
         try {
             while (rs.next()){
                 String name = rs.getString(TablDB.NAME_PILLS);
-                String description = rs.getString(TablDB.DESCRIPTION_PILLS);
                 int quantity = rs.getInt(TablDB.QUANTITY_PILLS);
                 Date expiratiodate = rs.getDate(TablDB.DATA_PILLS);
 
-                arrPills.add(new Pills(name, description, quantity, expiratiodate));
+                arrPills.add(new Pills(name, quantity, expiratiodate));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
