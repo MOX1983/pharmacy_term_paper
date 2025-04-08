@@ -169,17 +169,15 @@ public class MainClass {
         return arrPills;
     }
 
-    public ArrayList<Pills> sortA_Z(){
+    public ArrayList<Pills> sortZ_A(){
         Collections.sort(arrPills);
         return arrPills;
     }
 
-    public ArrayList<Pills> sortZ_A(){
+    public ArrayList<Pills> sortA_Z(){
         Collections.reverse(arrPills);
         return arrPills;
     }
 
-    // добавить или кнопку или через меню или табицу открывать информацию о таблетках
-    // картинка подробное описание
     // возможно уведомление о истёкшем сроке годностиы
 }
