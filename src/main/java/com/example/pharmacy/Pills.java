@@ -8,12 +8,35 @@ public class Pills implements Comparable<Pills>{
     private String description;
     private int quantity;
     private Date expiratioDate;
+    private byte[] img;
 
     public Pills( String name, String description, int quantity, Date expiratioDate) {
         this.name = name;
         this.description = description;
         this.quantity = quantity;
         this.expiratioDate = expiratioDate;
+    }
+
+    public Pills(String name, int quantity, Date expiratioDate) {
+        this.name = name;
+        this.quantity = quantity;
+        this.expiratioDate = expiratioDate;
+    }
+
+    public Pills(String name, String description, int quantity, Date expiratioDate, byte[] img) {
+        this.name = name;
+        this.description = description;
+        this.quantity = quantity;
+        this.expiratioDate = expiratioDate;
+        this.img = img;
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
     }
 
     public int getIdUser() {
