@@ -33,12 +33,11 @@
       </MenuBar>
    </top>
    <center>
-      <TableView fx:id="table_data" prefHeight="344.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table_data" prefHeight="375.0" prefWidth="521.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="Name" prefWidth="105.0" text=" Название" />
-            <TableColumn fx:id="Description" prefWidth="217.0" text="Описание" />
-          <TableColumn fx:id="Quantity" minWidth="0.0" prefWidth="95.0" text="Количество" />
-            <TableColumn fx:id="Date" minWidth="0.0" prefWidth="181.0" text="Срок годности партии" />
+          <TableColumn fx:id="Name" prefWidth="237.0" text=" Название" />
+          <TableColumn fx:id="Quantity" minWidth="0.0" prefWidth="92.0" text="Количество" />
+            <TableColumn fx:id="Date" minWidth="0.0" prefWidth="270.0" text="Срок годности партии" />
         </columns>
       </TableView>
    </center>

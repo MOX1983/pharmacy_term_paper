@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 
 public class MainClass {
@@ -28,14 +29,8 @@ public class MainClass {
     @FXML
     private Menu All_pharm;
 
-    ArrayList<Pills> arrPills;
-    ObservableList<Pills> dataPills = FXCollections.observableArrayList(read());
-
     @FXML
     private TableColumn<Pills, Date> Date;
-
-    @FXML
-    private TableColumn<Pills, String> Description;
 
     @FXML
     private TableColumn<Pills, String> Name;
@@ -67,14 +62,26 @@ public class MainClass {
     @FXML
     private TableView<Pills> table_data;
 
+    ArrayList<Pills> arrPills;
+    ObservableList<Pills> dataPills = FXCollections.observableArrayList(read());
+
     @FXML
     void initialize() {
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        Description.setCellValueFactory(new PropertyValueFactory<>("description"));
         Quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         Date.setCellValueFactory(new PropertyValueFactory<>("expiratioDate"));
 
         table_data.setItems(dataPills);
+
+        table_data.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2){
+                Pills pill = table_data.getSelectionModel().getSelectedItem();
+                if (pill != null) {
+                    openWinWhithPill("/com/example/pharmacy/stageWin.fxml", "Вся информация", pill);
+                }
+            }
+
+        });
 
         sort_A_Z.setOnAction(event -> {
             if(sort_A_Z.isSelected()){
@@ -124,6 +131,26 @@ public class MainClass {
         stage.showAndWait();
     }
 
+    public void openWinWhithPill(String path, String title, Pills pill){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(path));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        StageClass controller = loader.getController();
+        controller.setPills(pill);
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle(title);
+        stage.showAndWait();
+    }
+
     public ArrayList<Pills> read(){
         arrPills = new ArrayList<>();
         ResultSet rs = JDBCTable.readPillsSQL();
@@ -131,11 +158,10 @@ public class MainClass {
         try {
             while (rs.next()){
                 String name = rs.getString(TablDB.NAME_PILLS);
-                String description = rs.getString(TablDB.DESCRIPTION_PILLS);
                 int quantity = rs.getInt(TablDB.QUANTITY_PILLS);
                 Date expiratiodate = rs.getDate(TablDB.DATA_PILLS);
 
-                arrPills.add(new Pills(name, description, quantity, expiratiodate));
+                arrPills.add(new Pills(name, quantity, expiratiodate));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -152,4 +178,8 @@ public class MainClass {
         Collections.reverse(arrPills);
         return arrPills;
     }
+
+    // добавить или кнопку или через меню или табицу открывать информацию о таблетках
+    // картинка подробное описание
+    // возможно уведомление о истёкшем сроке годностиы
 }
