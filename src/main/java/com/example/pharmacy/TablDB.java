@@ -14,5 +14,6 @@ public class TablDB {
     public static final String DESCRIPTION_PILLS = "description";
     public static final String QUANTITY_PILLS = "quantity";
     public static final String DATA_PILLS = "expiratiodate";
+    public static final String IMG_PILLS = "image";
 
 }
