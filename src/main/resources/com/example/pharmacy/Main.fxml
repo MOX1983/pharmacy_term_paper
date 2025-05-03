@@ -13,7 +13,7 @@
    <top>
       <MenuBar fx:id="manubar" prefHeight="25.0" prefWidth="388.0" BorderPane.alignment="CENTER">
         <menus>
-          <Menu fx:id="All_pharm" mnemonicParsing="false" text="Все лекарства">
+          <Menu fx:id="All_pharm" mnemonicParsing="false" text="Сортировка">
                <items>
                   <RadioMenuItem fx:id="sort_A_Z" mnemonicParsing="false" text="По алфавиту (А-Я)">
                      <toggleGroup>
