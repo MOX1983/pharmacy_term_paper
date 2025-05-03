@@ -170,14 +170,13 @@ public class MainClass {
     }
 
     public ArrayList<Pills> sortZ_A(){
-        Collections.sort(arrPills);
+        arrPills.sort(Comparator.reverseOrder());
         return arrPills;
     }
 
     public ArrayList<Pills> sortA_Z(){
-        Collections.reverse(arrPills);
+        arrPills.sort(Comparator.naturalOrder());
         return arrPills;
     }
 
-    // возможно уведомление о истёкшем сроке годностиы
 }
