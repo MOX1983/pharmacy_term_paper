@@ -24,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="end" layoutX="139.0" layoutY="16.0" mnemonicParsing="false" text="Закончилось">
+      <RadioButton fx:id="end" layoutX="139.0" layoutY="16.0" mnemonicParsing="false" text="Закончились">
          <toggleGroup>
             <ToggleGroup fx:id="reason" />
          </toggleGroup>
