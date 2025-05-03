@@ -44,8 +44,6 @@ public class StageClass {
 
     @FXML
     void initialize() {
-        Image image = new Image("https://via.placeholder.com/150");
-        img.setImage(image);
 
     }
 
