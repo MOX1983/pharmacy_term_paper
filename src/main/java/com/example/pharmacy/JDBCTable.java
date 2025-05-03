@@ -105,4 +105,24 @@ public class JDBCTable extends Config{
             throw new RuntimeException(e);
         }
     }
+
+    public static boolean isLoginTaken(String login) {
+        String query = "SELECT COUNT(*) FROM users WHERE login = ?";
+
+        try(Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass)){
+            PreparedStatement prst = con.prepareStatement(query);
+
+            prst.setString(1, login);
+            ResultSet res = prst.executeQuery();
+
+            if(res.next()){
+                return res.getInt(1) > 0;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+
+    }
 }

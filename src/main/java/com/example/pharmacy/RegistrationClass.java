@@ -2,6 +2,7 @@ package com.example.pharmacy;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import animation.Shake;
@@ -42,12 +43,18 @@ public class RegistrationClass {
             String log = login.getText();
             String pass = password.getText();
 
-            if(!firstName.equals("") && !log.equals("") && !pass.equals("")){
-                User user = new User(firstName, log, pass);
-                JDBCTable.writesql(user);
-                openNewWin("/com/example/pharmacy/Main.fxml", "Главная");
-            }
-            else{
+            if (!firstName.equals("") && !log.equals("") && !pass.equals("")) {
+
+                if (JDBCTable.isLoginTaken(log)) {
+                    Shake logtext = new Shake(login);
+                    logtext.playAnim();
+                } else {
+                    User user = new User(firstName, log, pass);
+                    JDBCTable.writesql(user);
+                    openNewWin("/com/example/pharmacy/Main.fxml", "Главная");
+                }
+
+            } else {
                 Shake butt = new Shake(registration);
                 Shake logtext = new Shake(login);
                 Shake logpass = new Shake(password);
