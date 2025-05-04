@@ -37,7 +37,7 @@ public class StageClass {
 
     public void setPills(Pills pills){
         this.pills = pills;
-        resdPill();
+        readPill();
         showPill();
 
     }
@@ -47,7 +47,7 @@ public class StageClass {
 
     }
 
-    public void resdPill(){
+    public void readPill(){
         ResultSet rs = JDBCTable.readAllPillsSQL(pills);
 
         try {
