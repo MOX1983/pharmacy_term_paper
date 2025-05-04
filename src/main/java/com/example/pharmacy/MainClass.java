@@ -141,8 +141,8 @@ public class MainClass {
             throw new RuntimeException(e);
         }
 
-        StageClass controller = loader.getController();
-        controller.setPills(pill);
+        StageClass controller = loader.getController(); // Получаем контроллер StageClass
+        controller.setPills(pill); // Метод setPills(pill) передаёт в контроллер объект с данными
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
